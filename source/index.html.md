@@ -1,15 +1,11 @@
 ---
-title: API Reference
+title: Docs - ObsiFight API
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='http://api.obsifight.net'>Accéder à l'API</a>
+  - <a href='https://obsifight.net'>Revenir sur le site</a>
 
 includes:
   - errors
@@ -19,171 +15,161 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Bienvenue sur la documentation de l'API des services d'ObsiFight !
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Cette documentation est destinée aux développeurs d'ObsiFight, elle a pour but d'expliquer le fonctionnement et comment utiliser l'API HTTP d'ObsiFight.
 
 # Authentication
 
-> To authorize, use this code:
+Pour utiliser l'API et certaines routes privées, vous devez vous authentifier à l'aide d'un __pseudo__ et d'un __mot de passe__ qui vous serons founis.
+Pour éviter d'utiliser votre mot de passe et votre pseudo lors de chaque requête, vous utiliserez un __token__.
 
-```ruby
-require 'kittn'
+## Récupérer le token d'authentification
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Contenu de la requête pour s'authentifier
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "username": "Votre pseudo",
+  "password": "Votre mot de passe"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> La requête doit être fait en POST pour pouvoir envoyer les données
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+> Vous recevrez une réponse de ce type
+
+```json
+{
+  "status": true,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+  }
+}
+```
+
+Il vous faut appeler l'URL <code>POST http://api.obsifight.net/authenticate</code> en spécifiant dans le corps de la requête vos identifiants en JSON.
+
+<aside class="notice">
+Le token obtenu est valable 5 minutes.
+</aside>
+
+## Une fois le token récupéré
+
+Pour vous authentifier, au cours des requêtes vous devrez spécifier dans un header (_Authorization_) le token que vous aurez récupéré.
+
+`Authorization: TOKEN`
+
+<aside class="notice">
+Vous devez remplacer <code>TOKEN</code> par votre token obtenu précédemment.
+</aside>
+
+# Utilisateurs
+
+## Récupérer les informations
+
+
+```shell
+curl "http://api.obsifight.net/user/<USERNAME>"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera le résultat suivant
+
+```json
+{
+  "status": true,
+  "data": {
+    "ids": {
+      "web": 2,
+      "logblock": 19,
+      "auth": 30
+    },
+    "usernames": {
+      "histories": [],
+      "current": "Eywek"
+    },
+    "uuid": "84cb4e81-aac7-9790-4938-cf56103fa7c5",
+    "registerDate": "2015-10-16T12:04:50.000Z",
+    "lastConnection": {
+      "id": 330,
+      "username": "Eywek",
+      "ip": "127.0.0.1",
+      "date": "2015-02-12T17:20:34.000Z",
+      "mac_adress": null
+    },
+    "adresses": {
+      "mac": [],
+      "ip": [
+        "127.0.0.1",
+        "127.0.0.2"
+      ]
+    }
+  }
+}
+```
+
+Cette action vous donne les informations de bases d'un utilisateur.
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<USERNAME>`
+
+### Paramètres
+
+Paramètre | Par défaut | Description
+--------- | ------- | -----------
+USERNAME | '' | Doit contenir le pseudo ou l'ID (site)
+
+<aside class="success">
+Note — cette action est privée, vous devez spécifiez un token.
+</aside>
+
+## Savoir si un joueur peut voter
+
+```shell
+curl "http://api.obsifight.net/user/<USERNAME>/vote/can"
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "success": "User can vote!"
+}
+```
+
+```json
+{
+  "status": true,
+  "success": "User can't vote!"
+}
+```
+
+```json
+{
+  "status": true,
+  "success": "User hasn't vote yet!"
+}
+```
+
+```json
+{
+  "status": true,
+  "success": "Admin hasn't config vote yet!"
+}
+```
+
+Cette action vous indique si un joueur peut re-voter.
+Si le `status` est à `true`, le joueur peut re-voter et inversément.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://api.obsifight.net/user/<USERNAME>/vote/can`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
+USERNAME | Le pseudo du joueur recherché

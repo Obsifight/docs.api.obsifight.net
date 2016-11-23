@@ -1,20 +1,12 @@
-# Errors
+# Erreurs
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-The Kittn API uses the following error codes:
+L'API peut retourner les codes suivants
 
 
-Error Code | Meaning
+Error Code | Explications
 ---------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+400 | Bad Request -- Votre requête n'est pas complète
+401 | Unauthorized -- Votre token d'authentification est invalide ou expiré
+403 | Forbidden -- Vous devez spécifier un token d'authentification pour accéder à l'URL
+404 | Not Found -- La ressource n'a pas été trouvée
+500 | Internal Server Error -- Une erreur interne a eu lieu, reportez le problème à Eywek.
