@@ -57,12 +57,12 @@ curl "http://api.obsifight.net/sanction/bans"
 
 Cette action vous liste les bans dans l'ordre décroissant.
 
-### HTTP Request
+### Requête HTTP
 
 `GET http://api.obsifight.net/sanction/bans?limit=<limit>`
 
-### URL Parameters
+### Paramètre
 
 Parameter | Description
 --------- | -----------
-limit | Le nombre de ban a récupéré (facultatif)
+limit | Le nombre de ban a récupérer (facultatif)

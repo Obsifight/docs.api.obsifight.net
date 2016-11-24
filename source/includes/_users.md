@@ -53,7 +53,7 @@ Info - Si le pseudo spécifié est un ancien pseudo, le joueur correspondant à 
 
 `GET http://api.obsifight.net/user/<USERNAME>`
 
-### Paramètres
+### Paramètre
 
 Paramètre | Par défaut | Description
 --------- | ------- | -----------
@@ -102,11 +102,11 @@ curl "http://api.obsifight.net/user/<USERNAME>/vote/can"
 Cette action vous indique si un joueur peut re-voter.
 Si le `status` est à `true`, le joueur peut re-voter et inversément.
 
-### HTTP Request
+### Requête HTTP
 
 `GET http://api.obsifight.net/user/<USERNAME>/vote/can`
 
-### URL Parameters
+### Paramètre
 
 Parameter | Description
 --------- | -----------
