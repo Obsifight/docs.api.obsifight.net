@@ -99,6 +99,7 @@ server | Le serveur du banissement (nom bungeecord)
 type | Le type du banissement (`user`, ou `ip`)
 user | Les informations du joueur a bannir si le type du banissement est 'user' (objet contenant `username` ou `uuid`)
 ip | L'IP a bannir si le type du banissement est 'ip'
+end_date | La date de fin du banissement (facultatif)
 
 <aside class="warning">
 Important — le paramètre `user.uuid` doit être un UUID valide sans les tirets (exemple: `21bee8e06a1d1724acbaded7cce84401`)
