@@ -67,6 +67,47 @@ Paramètre | Description
 --------- | -----------
 limit | Le nombre de ban a récupérer (facultatif)
 
+## Ajouter un banissement
+
+```shell
+curl -XPOST -H "Content-type: application/json"
+-d '{"reason": "Ma raison", "server": "(global)", "type": "user", "user": {"username": "Eywek"}}'
+'http://api.obsifight.net/sanction/bans'
+```
+
+> L'API vous retournera un résultat de ce type si le banissement a bien été modifié
+
+```json
+{
+  "status": true,
+  "success": "Ban has been successfuly added!"
+}
+```
+
+Cette action vous permet d'ajouter un banissement (IP ou joueur).
+
+### Requête HTTP
+
+`POST http://api.obsifight.net/sanction/bans`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+reason | La raison du banissement
+server | Le serveur du banissement (nom bungeecord)
+type | Le type du banissement (`user`, ou `ip`)
+user | Les informations du joueur a bannir si le type du banissement est 'user' (objet contenant `username` ou `uuid`)
+ip | L'IP a bannir si le type du banissement est 'ip'
+
+<aside class="warning">
+Important — le paramètre `user.uuid` doit être un UUID valide sans les tirets (exemple: `21bee8e06a1d1724acbaded7cce84401`)
+</aside>
+<aside class="info">
+Note — en configurant le paramètre `server` à '(global)', le joueur ou l'IP sera banni(e) sur tous les serveurs
+</aside>
+
+
 ## Modifier un banissement
 
 ```shell
