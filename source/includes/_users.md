@@ -108,6 +108,6 @@ Si le `status` est à `true`, le joueur peut re-voter et inversément.
 
 ### Paramètre
 
-Parameter | Description
+Paramètre | Description
 --------- | -----------
 USERNAME | Le pseudo du joueur recherché

@@ -1,6 +1,6 @@
 # Sanctions
 
-## Récupérer les bans
+## Récupérer les banissements
 
 ```shell
 curl "http://api.obsifight.net/sanction/bans"
@@ -63,6 +63,42 @@ Cette action vous liste les bans dans l'ordre décroissant.
 
 ### Paramètre
 
-Parameter | Description
+Paramètre | Description
 --------- | -----------
 limit | Le nombre de ban a récupérer (facultatif)
+
+## Modifier un banissement
+
+```shell
+curl -H "Content-type: application/json" -d '{"end_date": "2016-11-28 19:20:01"}' 'http://api.obsifight.net/sanction/bans/<id>'
+```
+
+> L'API vous retournera un résultat de ce type si le banissement a bien été modifié
+
+```json
+{
+  "status": true,
+  "success": "Ban has been successfuly edited!"
+}
+```
+
+Cette action vous permet de modifier la date de fin d'un banissement ou de le débannir.
+
+### Requête HTTP
+
+`PUT http://api.obsifight.net/sanction/bans/<id>`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+id | L'ID du bannissement a modifier
+end_date | La date de find de bannissement (facultatif)
+remove_reason | La raison du dé-banissement (facultatif)
+
+<aside class="warning">
+Important — le paramètre `end_date` ne doit pas être utilisé pour débannir un utilisateur
+</aside>
+<aside class="info">
+Note — en utilisant le paramètre `remove_reason` vous dé-bannierais le joueur instantanément, le statut du bannissement, la date de dé-banissement et votre pseudo seront automatiquement ajouté.
+</aside>
