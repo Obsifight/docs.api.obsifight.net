@@ -70,7 +70,8 @@ limit | Le nombre de ban a récupérer (facultatif)
 ## Modifier un banissement
 
 ```shell
-curl -H "Content-type: application/json" -d '{"end_date": "2016-11-28 19:20:01"}' 'http://api.obsifight.net/sanction/bans/<id>'
+curl -H "Content-type: application/json"
+-d '{"end_date": "2016-11-28 19:20:01"}' 'http://api.obsifight.net/sanction/bans/<id>'
 ```
 
 > L'API vous retournera un résultat de ce type si le banissement a bien été modifié
