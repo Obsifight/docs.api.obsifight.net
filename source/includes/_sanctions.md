@@ -4,6 +4,7 @@
 
 ```shell
 curl "http://api.obsifight.net/sanction/bans"
+  -H "Authorization: TOKEN"
 ```
 
 > L'API vous retournera un résultat de ce type
@@ -70,9 +71,10 @@ limit | Le nombre de ban a récupérer (facultatif)
 ## Ajouter un banissement
 
 ```shell
-curl -XPOST -H "Content-type: application/json"
--d '{"reason": "Ma raison", "server": "(global)", "type": "user", "user": {"username": "Eywek"}}'
-'http://api.obsifight.net/sanction/bans'
+curl -XPOST 'http://api.obsifight.net/sanction/bans'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"reason": "Ma raison", "server": "(global)", "type": "user", "user": {"username": "Eywek"}}'
 ```
 
 > L'API vous retournera un résultat de ce type si le banissement a bien été modifié
@@ -112,8 +114,10 @@ Note — en configurant le paramètre `server` à '(global)', le joueur ou l'IP 
 ## Modifier un banissement
 
 ```shell
-curl -H "Content-type: application/json"
--d '{"end_date": "2016-11-28 19:20:01"}' 'http://api.obsifight.net/sanction/bans/<id>'
+curl -XPUT 'http://api.obsifight.net/sanction/bans/<id>'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"end_date": "2016-11-28 19:20:01"}'
 ```
 
 > L'API vous retournera un résultat de ce type si le banissement a bien été modifié
