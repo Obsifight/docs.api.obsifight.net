@@ -71,7 +71,7 @@ limit | Le nombre de ban a récupérer (facultatif)
 ## Récupérer un banissement
 
 ```shell
-curl "http://api.obsifight.net/sanction/ban/<id>"
+curl "http://api.obsifight.net/sanction/bans/<id>"
   -H "Authorization: TOKEN"
 ```
 
@@ -106,7 +106,7 @@ Cette action vous affiche les informations du ban demandé.
 
 ### Requête HTTP
 
-`GET http://api.obsifight.net/sanction/ban/<id>`
+`GET http://api.obsifight.net/sanction/bans/<id>`
 
 ### Paramètre
 
