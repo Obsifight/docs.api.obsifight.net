@@ -68,6 +68,52 @@ Paramètre | Description
 --------- | -----------
 limit | Le nombre de ban a récupérer (facultatif)
 
+## Récupérer un banissement
+
+```shell
+curl "http://api.obsifight.net/sanction/ban/<id>"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un résultat de ce type
+
+```json
+{
+  "status": true,
+  "data": {
+    "ban": {
+      "id": 3889,
+      "reason": "cc",
+      "ban": "(global)",
+      "date": "2016-11-23T14:21:16.000Z",
+      "staff": {
+        "username": "yelrambec"
+      },
+      "end_date": null,
+      "state": 1,
+      "duration": "PERMANENT",
+      "remove_date": null,
+      "remove_staff": null,
+      "remove_reason": null,
+      "ip": "77.132.218.165",
+      "ban_type": "ip"
+    }
+  }
+}
+```
+
+Cette action vous affiche les informations du ban demandé.
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/sanction/ban/<id>`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+id | L'ID du ban a récupéré
+
 ## Ajouter un banissement
 
 ```shell
