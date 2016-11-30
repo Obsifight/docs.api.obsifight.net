@@ -195,3 +195,96 @@ Important — le paramètre `end_date` ne doit pas être utilisé pour débannir
 <aside class="info">
 Note — en utilisant le paramètre `remove_reason` vous dé-bannierais le joueur instantanément, le statut du bannissement, la date de dé-banissement et votre pseudo seront automatiquement ajouté.
 </aside>
+
+## Récupérer les sanctions d'un joueur
+
+```shell
+curl "http://api.obsifight.net/user/<username>/sanctions"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un résultat de ce type
+
+```json
+{
+  "status": true,
+  "data": {
+    "bans": [
+      {
+        "id": 2433,
+        "reason": "Ma super raison",
+        "server": "(global)",
+        "date": "2016-07-13T21:12:54.000Z",
+        "staff": {
+          "username": "dem0niak"
+        },
+        "end_date": null,
+        "state": 0,
+        "duration": "PERMANENT",
+        "remove_date": "2016-07-21T09:33:46.000Z",
+        "remove_staff": {
+          "username": "IceGamingFr"
+        },
+        "remove_reason": "Ma raison de déban",
+        "user": {
+          "uuid": "56dab2e660a7497f804c9d436b317d03",
+          "username": "roumi1996"
+        },
+        "ban_type": "user"
+      }
+    ],
+    "kicks": [
+      {
+        "id": 636,
+        "reason": "Ma raison",
+        "server": "(global)",
+        "date": "2016-04-03T12:58:07.000Z",
+        "staff": {
+          "username": "CONSOLE"
+        },
+        "user": {
+          "uuid": "56dab2e660a7497f804c9d436b317d03",
+          "username": "roumi1996"
+        }
+      }
+    ],
+    "mutes": [
+      {
+        "id": 7207,
+        "reason": "La raison du mute",
+        "server": "(global)",
+        "date": "2016-05-28T21:19:59.000Z",
+        "staff": {
+          "username": "Bachi"
+        },
+        "end_date": "2016-05-28T21:21:59.000Z",
+        "state": 0,
+        "duration": 120,
+        "remove_date": "2016-05-28T21:20:04.000Z",
+        "remove_staff": {
+          "username": "roumi1996"
+        },
+        "remove_reason": "La raison du dé-mute",
+        "user": {
+          "uuid": "56dab2e660a7497f804c9d436b317d03",
+          "username": "roumi1996"
+        },
+        "mute_type": "user"
+      }
+    ]
+  }
+}
+```
+
+Cette action vous liste les sanctions d'un joueur dans un ordre décroissant
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<username>/sanctions?limit=<limit>`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+username | Le pseudo du joueur
+limit | Le nombre de ban a récupérer (facultatif)
