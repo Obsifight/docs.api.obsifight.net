@@ -63,6 +63,46 @@ USERNAME | '' | Doit contenir le pseudo ou l'ID (site)
 Note — cette action est privée, vous devez spécifiez un token.
 </aside>
 
+## Vérifier les identifiants
+
+
+```shell
+curl -XPOST "http://api.obsifight.net/user/authenticate"
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"username": "Eywek", "password": "Mon mot de passe non encodé"}'
+```
+
+> L'API vous retournera le résultat suivant
+
+```json
+{
+  "status": true,
+  "data": {
+    "user": {
+      "id": 2,
+    }
+  }
+}
+```
+
+Cette action vous retourne l'ID (web) de l'utilisateur correspondant aux identifiants transmis
+
+### Requête HTTP
+
+`POST http://api.obsifight.net/user/authenticate`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -------
+username | Doit contenir le pseudo du joueur
+password | Doit contenir le mot de passe du joueur (non encodé)
+
+<aside class="success">
+Note — cette action est privée, vous devez spécifiez un token.
+</aside>
+
 ## Savoir si un joueur peut voter
 
 ```shell

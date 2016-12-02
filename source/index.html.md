@@ -6,7 +6,7 @@ language_tabs:
 toc_footers:
   - <a href='http://api.obsifight.net'>Accéder à l'API</a>
   - <a href='https://obsifight.net'>Revenir sur le site</a>
-  - "<em style=\"position:absolute;bottom:5px;\">Version de l'API : 1.0.0-alpha.2.0</em>"
+  - "<em style=\"position:absolute;bottom:5px;\">Version de l'API : 1.0.0-alpha.3.0</em>"
 
 includes:
   - users
