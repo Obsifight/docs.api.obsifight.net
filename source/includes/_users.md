@@ -120,7 +120,7 @@ curl "http://api.obsifight.net/user/<USERNAME>/vote/can"
 
 ```json
 {
-  "status": true,
+  "status": false,
   "success": "User can't vote!"
 }
 ```
