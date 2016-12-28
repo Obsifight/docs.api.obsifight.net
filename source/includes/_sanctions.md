@@ -484,3 +484,63 @@ Paramètre | Description
 --------- | -----------
 username | Le pseudo du joueur
 limit | Le nombre de ban a récupérer (facultatif)
+
+## Savoir si un joueur est bannis
+
+```shell
+curl "http://api.obsifight.net/user/<username>/sanctions/banned"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un résultat de ce type
+
+```json
+{
+  "status": true,
+  "data": {
+    "banned": true
+  }
+}
+```
+
+Cette action vous indique si le joueur spécifié est bannis ou non
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<username>/sanctions/banned`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+username | Le pseudo du joueur
+
+## Savoir si un joueur est mute
+
+```shell
+curl "http://api.obsifight.net/user/<username>/sanctions/muted"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un résultat de ce type
+
+```json
+{
+  "status": true,
+  "data": {
+    "muted": false
+  }
+}
+```
+
+Cette action vous indique si le joueur spécifié est mute ou non
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<username>/sanctions/muted`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+username | Le pseudo du joueur
