@@ -63,6 +63,41 @@ USERNAME | '' | Doit contenir le pseudo ou l'ID (site)
 Note — cette action est privée, vous devez spécifiez un token.
 </aside>
 
+## Récupérer le pseudo depuis un UUID
+
+
+```shell
+curl "http://api.obsifight.net/user/from/uuid/<UUID>"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera le résultat suivant
+
+```json
+{
+  "status": true,
+  "data": {
+    "username": "Eywek"
+  }
+}
+```
+
+Cette action vous donne le pseudo actuel de l'UUID fourni
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/from/uuid/<UUID>`
+
+### Paramètre
+
+Paramètre | Description
+--------- | ------- | -----------
+UUID | Doit contenir l'UUID (avec tirets)
+
+<aside class="success">
+Note — cette action est privée, vous devez spécifiez un token.
+</aside>
+
 ## Vérifier les identifiants
 
 
