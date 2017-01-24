@@ -269,7 +269,7 @@ Cette action vous donne tous les utilisateurs et leurs dernières connexion corr
 
 ### Requête HTTP
 
-`GET http://api.obsifight.net/user/<USERNAME>/money/timeline`
+`POST http://api.obsifight.net/user/find`
 
 ### Paramètre
 
