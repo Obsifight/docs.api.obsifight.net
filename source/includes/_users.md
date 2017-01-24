@@ -191,6 +191,8 @@ USERNAME | Le pseudo du joueur recherché
 
 ```shell
 curl "http://api.obsifight.net/user/<USERNAME>/money/timeline"
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
 ```
 
 > L'API vous retournera un des résultats suivants
@@ -239,3 +241,39 @@ Cette action vous donne toutes les actions effectués sur les points boutique du
 Paramètre | Description
 --------- | -----------
 USERNAME | Le pseudo du joueur recherché
+
+## Chercher un joueur
+
+```shell
+curl -XPOST 'http://api.obsifight.net/user/find'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"ip": "127.0.0.1", "mac": "00-00-00-00-00-00"}'
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": [
+    {
+      "username": "Eywek",
+      "last_connection": "2017-01-23T18:50:21.000Z"
+    }
+  ]
+}
+```
+
+Cette action vous donne tous les utilisateurs et leurs dernières connexion correspondant à l'IP ou à l'adresse MAC fournie
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<USERNAME>/money/timeline`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+ip | L'ip du joueur recherché (optionnel si `mac` est fourni)
+mac | L'ip du joueur recherché (optionnel si `ip` est fourni)
