@@ -186,3 +186,56 @@ Si le `status` est à `true`, le joueur peut re-voter et inversément.
 Paramètre | Description
 --------- | -----------
 USERNAME | Le pseudo du joueur recherché
+
+## Informations sur les points boutique
+
+```shell
+curl "http://api.obsifight.net/user/<USERNAME>/money/timeline"
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": {
+    "oldBalance": 6457,
+    "current": 3941,
+    "timeline": [
+      {
+        "date": "2017-01-08T21:25:40.000Z",
+        "action_id": "purchase_item",
+        "action_type": "remove",
+        "action_message": "Buy Kit Minerai",
+        "sold": "-249"
+      },
+      {
+        "date": "2017-01-07T17:30:13.000Z",
+        "action_id": "purchase_money_paysafecard",
+        "action_type": "add",
+        "action_message": "Pay with paysafecard",
+        "sold": "+12"
+      },
+      {
+        "date": "2017-01-07T15:30:00.000Z",
+        "action_id": "refund",
+        "action_type": "add",
+        "action_message": "Refunded",
+        "sold": "+2990"
+      }
+    ]
+  }
+}
+```
+
+Cette action vous donne toutes les actions effectués sur les points boutique du joueur de manière chronologique.
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<USERNAME>/money/timeline`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+USERNAME | Le pseudo du joueur recherché
