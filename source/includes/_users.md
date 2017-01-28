@@ -277,3 +277,38 @@ Paramètre | Description
 --------- | -----------
 ip | L'ip du joueur recherché (optionnel si `mac` est fourni)
 mac | L'ip du joueur recherché (optionnel si `ip` est fourni)
+
+## Récupérer des pseudos
+
+```shell
+curl -XPOST 'http://api.obsifight.net/user/infos/username'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"ids": [1, 2]}'
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": {
+    "users": {
+      "1": "Eywek",
+      "2": "yolo"
+    }
+  }
+}
+```
+
+Cette action vous donne tous les pseudos des IDs fournis en paramètres.
+
+### Requête HTTP
+
+`POST http://api.obsifight.net/user/infos/username`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+ids | Tableau contenant des IDs
