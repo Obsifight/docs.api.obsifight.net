@@ -322,6 +322,13 @@ curl -XPOST 'http://api.obsifight.net/user/infos/username'
   -d '{"ids": [1, 2]}'
 ```
 
+```shell
+curl -XPOST 'http://api.obsifight.net/user/infos/username'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"uuids": ["84cb4e81-aac7-4938-9790-cf56103fa7c5"]}'
+```
+
 > L'API vous retournera un des résultats suivants
 
 ```json
@@ -336,7 +343,18 @@ curl -XPOST 'http://api.obsifight.net/user/infos/username'
 }
 ```
 
-Cette action vous donne tous les pseudos des IDs fournis en paramètres.
+```json
+{
+  "status": true,
+  "data": {
+    "users": {
+      "84cb4e81-aac7-4938-9790-cf56103fa7c5": "Eywek"
+    }
+  }
+}
+```
+
+Cette action vous donne tous les pseudos des IDs/UUIDs fournis en paramètres.
 
 ### Requête HTTP
 
@@ -346,4 +364,5 @@ Cette action vous donne tous les pseudos des IDs fournis en paramètres.
 
 Paramètre | Description
 --------- | -----------
-ids | Tableau contenant des IDs
+ids | Tableau contenant des IDs (doit être vide si `uuids` est rempli)
+uuids | Tableau contenant des UUIDs (doit être vide si `ids` est rempli)
