@@ -399,3 +399,44 @@ Paramètre | Description
 --------- | -----------
 username 1 | Pseudo du joueur à comparer
 username 2 | Pseudo du joueur à comparer
+
+## Récupérer les stats
+
+```shell
+curl -XGET 'http://api.obsifight.net/user/<username>/stats'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": {
+    "ks": {
+      "kills": 0,
+      "deaths": 1,
+      "ratio": 0
+    },
+    "history": {
+      "kills": [],
+      "deaths": [
+        "JeSuisLeSIDA"
+      ]
+    }
+  }
+}
+```
+
+Cette action vous donne les stats d'un joueur (kills/deaths/ratio).
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<username>/stats`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+username | Pseudo du joueur
