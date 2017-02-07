@@ -366,3 +366,36 @@ Paramètre | Description
 --------- | -----------
 ids | Tableau contenant des IDs (doit être vide si `uuids` est rempli)
 uuids | Tableau contenant des UUIDs (doit être vide si `ids` est rempli)
+
+## Comparer des joueurs
+
+```shell
+curl -XGET 'http://api.obsifight.net/user/compare/<username 1>/<username 2>'
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": {
+    "commonIPPercentage": 40,
+    "commonMACPercentage": 100
+  }
+}
+```
+
+Cette action vous donne le pourcentage d'adresses IP et MAC en commun entre les 2 joueurs fournis
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/compare/<username 1>/<username 2>`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+username 1 | Pseudo du joueur à comparer
+username 2 | Pseudo du joueur à comparer
