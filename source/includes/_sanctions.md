@@ -60,13 +60,15 @@ Cette action vous liste les bans dans l'ordre décroissant.
 
 ### Requête HTTP
 
-`GET http://api.obsifight.net/sanction/bans?limit=<limit>`
+`GET http://api.obsifight.net/sanction/bans?limit=<limit>&count=0&date=2016-%`
 
 ### Paramètre
 
 Paramètre | Description
 --------- | -----------
 limit | Le nombre de ban a récupérer (facultatif)
+count | Boolean (facultatif)
+date | Une date au format YYYY-MM-DD HH:MM:SS (pouvant contenir % pour LIKE) (facultatif)
 
 ## Récupérer un banissement
 
@@ -256,13 +258,15 @@ Cette action vous liste les bans dans l'ordre décroissant.
 
 ### Requête HTTP
 
-`GET http://api.obsifight.net/sanction/mutes?limit=<limit>`
+`GET http://api.obsifight.net/sanction/mutes?limit=<limit>&count=0&date=2016-%`
 
 ### Paramètre
 
 Paramètre | Description
 --------- | -----------
 limit | Le nombre de mute a récupérer (facultatif)
+count | Boolean (facultatif)
+date | Une date au format YYYY-MM-DD HH:MM:SS (pouvant contenir % pour LIKE) (facultatif)
 
 ## Récupérer un mute
 
