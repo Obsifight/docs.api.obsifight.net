@@ -31,3 +31,48 @@ authKey | Un hash en sha256 du mot de passe de l'utilisateur
 <aside class="success">
 Note — cette action est publique pour permettre aux utilisateurs d'y accéder en GET.
 </aside>
+
+## Obtenir les tweets "aimés"
+
+
+```shell
+curl "http://api.obsifight.net/socials/twitter/tweets/liked?count=1"
+```
+
+> L'API va retourner une liste de tweets comme ceci :
+
+```json
+{
+  "status":true,
+  "data":[
+    {
+      "id":860167413471555600,
+      "text":"@ObsiFight Pas grave ;) Bon chance au développeur :p",
+      "retweet_count":0,
+      "retweeted":false,
+      "created_at":"Thu May 04 16:21:07 +0000 2017",
+      "user":{
+        "id":728282238287220700,
+        "name":"Northen_Flo",
+        "screen_name":"NorthenFlo"
+      }
+    }
+  ]
+}
+```
+
+Cette action permet de récupérer les tweets aimé par le compte Twitter \@ObsiFight.
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/socials/twitter/tweets/liked`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -------
+count | Permet de limiter le nombre de résultat
+
+<aside class="success">
+Note — cette action est publique pour permettre aux utilisateurs d'y accéder en GET.
+</aside>
