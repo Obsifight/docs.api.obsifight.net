@@ -222,6 +222,76 @@ Paramètre | Description
 --------- | -----------
 USERNAME | Le pseudo du joueur recherché
 
+## Récupérer le nombre de points boutique
+
+```shell
+curl "http://api.obsifight.net/user/<USERNAME>/money"
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "data": {
+    "money": 6457
+  }
+}
+```
+
+Cette action vous donne le nombre de points boutique du joueur.
+
+### Requête HTTP
+
+`GET http://api.obsifight.net/user/<USERNAME>/money`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+USERNAME | Le pseudo du joueur recherché
+
+## Transférer des points boutique
+
+```shell
+curl -XPOST "http://api.obsifight.net/user/<USERNAME>/money/transfer"
+  -H "Content-type: application/json"
+  -H "Authorization: TOKEN"
+  -d '{"amount": 10, "receiver": "Suertzz"}'
+```
+
+> L'API vous retournera un des résultats suivants
+
+```json
+{
+  "status": true,
+  "success": "Transfer successfully proceeded."
+}
+```
+
+```json
+{
+  "status": false,
+  "success": "User didn't have enough money."
+}
+```
+
+Cette action vous permet d'échanger des points boutique entre deux joueurs.
+
+### Requête HTTP
+
+`POST http://api.obsifight.net/user/<USERNAME>/money/transfer`
+
+### Paramètre
+
+Paramètre | Description
+--------- | -----------
+USERNAME | Le pseudo du joueur qui envoit
+amount | Le montant de la transaction
+receiver | Le pseudo du joueur qui reçoit
+
 ## Informations sur les points boutique
 
 ```shell
