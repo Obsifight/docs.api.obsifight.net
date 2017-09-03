@@ -290,7 +290,7 @@ Paramètre | Description
 --------- | -----------
 USERNAME | Le pseudo du joueur qui envoit
 amount | Le montant de la transaction
-receiver | Le pseudo du joueur qui reçoit
+receiver | Le pseudo du joueur qui reçoit (null est toléré)
 
 ## Informations sur les points boutique
 
