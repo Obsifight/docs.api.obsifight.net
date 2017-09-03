@@ -274,7 +274,7 @@ curl -XPOST "http://api.obsifight.net/user/<USERNAME>/money/transfer"
 ```json
 {
   "status": false,
-  "success": "User didn't have enough money."
+  "error": "User didn't have enough money."
 }
 ```
 
